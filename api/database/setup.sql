@@ -4,18 +4,17 @@ DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE diary (
     diary_id INT GENERATED ALWAYS AS IDENTITY,
-    title VARCHAR (100) NOT NULL,
-    content VARCHAR (500) NOT NULL,
+    date VARCHAR (100) NOT NULL,
+    text VARCHAR (500) NOT NULL,
+    category VARCHAR (50) NOT NULL,
     PRIMARY KEY (diary_id)
 );
-
 CREATE TABLE user_account (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(30) UNIQUE NOT NULL,
     password CHAR(60) NOT NULL,
     PRIMARY KEY (user_id)
 );
-
 CREATE TABLE token (
     token_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT NOT NULL,

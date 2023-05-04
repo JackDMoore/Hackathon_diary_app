@@ -29,8 +29,8 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            Date: form.get("date"),
-            Text: form.get("text"),
+            date: form.get("date"),
+            text: form.get("text"),
             Category: form.get("category")
         })
     }

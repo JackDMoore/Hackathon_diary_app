@@ -1,11 +1,12 @@
 const db = require('../database/connect');
 
-class Diary {
 
-    constructor({ diary_id, title, content }) {
+class Diary {
+    constructor({ diary_id, date, text, category }) {
         this.id = diary_id;
-        this.title = title;
-        this.content = content;
+        this.date = date;
+        this.text = text;
+        this.category = category;
     }
 
     static async getAll() {
@@ -22,9 +23,9 @@ class Diary {
     }
 
     static async create(data) {
-        const { title, content } = data;
-        let response = await db.query("INSERT INTO diary (title, content) VALUES ($1, $2) RETURNING diary_id;",
-            [title, content]);
+        const { date, text, category } = data;
+        let response = await db.query("INSERT INTO diary (date, text, category) VALUES ($1, $2) RETURNING diary_id;",
+            [date, text, category]);
         const newId = response.rows[0].diary_id;
         const newDiary = await Diary.getOneById(newId);
         return newDiary;
@@ -34,7 +35,5 @@ class Diary {
         let response = await db.query("DELETE FROM diary WHERE diary_id = $1 RETURNING *;", [this.id]);
         return new Diary(response.rows[0]);
     }
-
 }
-
 module.exports = Diary;

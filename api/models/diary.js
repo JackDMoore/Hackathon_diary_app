@@ -24,7 +24,7 @@ class Diary {
 
     static async create(data) {
         const { date, text, category } = data;
-        let response = await db.query("INSERT INTO diary (date, text, category) VALUES ($1, $2) RETURNING diary_id;",
+        let response = await db.query("INSERT INTO diary (date, text, category) VALUES ($1, $2, $3) RETURNING diary_id;",
             [date, text, category]);
         const newId = response.rows[0].diary_id;
         const newDiary = await Diary.getOneById(newId);

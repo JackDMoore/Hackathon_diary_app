@@ -38,7 +38,7 @@ class Token {
     }
 
     async destroy() {
-      let response = await db.query("DELETE FROM post WHERE post_id = $1 RETURNING *;", [this.id]);
+      let response = await db.query("DELETE FROM diary WHERE diary_id = $1 RETURNING *;", [this.id]);
       return new Token(response.rows[0]);
   }
 

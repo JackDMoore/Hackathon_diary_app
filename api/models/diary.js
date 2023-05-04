@@ -2,8 +2,8 @@ const db = require('../database/connect');
 
 class Diary {
 
-    constructor({ post_id, title, content }) {
-        this.id = post_id;
+    constructor({ diary_id, title, content }) {
+        this.id = diary_id;
         this.title = title;
         this.content = content;
     }
@@ -14,7 +14,7 @@ class Diary {
     }
 
     static async getOneById(id) {
-        const response = await db.query("SELECT * FROM diary WHERE post_id = $1", [id]);
+        const response = await db.query("SELECT * FROM diary WHERE diary_id = $1", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate diary.")
         }

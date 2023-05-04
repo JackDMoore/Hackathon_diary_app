@@ -1,13 +1,13 @@
 const { Router } = require('express');
 
 const authenticator = require("../middleware/authenticator");
-const postController = require('../controllers/post.js');
+const diaryController = require('../controllers/diary.js');
 
-const postRouter = Router();
+const diaryRouter = Router();
 
-postRouter.get("/", authenticator, postController.index);
-postRouter.post("/", postController.create);
-postRouter.get("/:id", postController.show);
-postRouter.delete("/:id", postController.destroy);
+diaryRouter.get("/", authenticator, diaryController.index);
+diaryRouter.diary("/", diaryController.create);
+diaryRouter.get("/:id", diaryController.show);
+diaryRouter.delete("/:id", diaryController.destroy);
 
-module.exports = postRouter;
+module.exports = diaryRouter;

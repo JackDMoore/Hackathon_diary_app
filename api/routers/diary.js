@@ -6,7 +6,7 @@ const diaryController = require('../controllers/diary.js');
 const diaryRouter = Router();
 
 diaryRouter.get("/", authenticator, diaryController.index);
-diaryRouter.diary("/", diaryController.create);
+diaryRouter.post("/", diaryController.create);
 diaryRouter.get("/:id", diaryController.show);
 diaryRouter.delete("/:id", diaryController.destroy);
 

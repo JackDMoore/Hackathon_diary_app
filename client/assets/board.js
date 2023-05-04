@@ -1,17 +1,17 @@
 function createPostElement (data) {
     const post = document.createElement("div");
-    post.className = "post";
+    post.className = "diary";
 
     const header = document.createElement("h2");
-    header.textContent = data["Date"];
+    header.textContent = data["date"];
     post.appendChild(header);
 
     const text = document.createElement("p");
-    text.textContent = data["Text"];
+    text.textContent = data["text"];
     post.appendChild(text);
 
     const category = document.createElement("p");
-    category.textContent = data["Category"];
+    category.textContent = data["category"];
     post.appendChild(category);
 
     return post;
@@ -29,9 +29,9 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            Date: form.get("Date"),
-            Text: form.get("Text"),
-            Category: form.get("Category")
+            Date: form.get("date"),
+            Text: form.get("text"),
+            Category: form.get("category")
         })
     }
 

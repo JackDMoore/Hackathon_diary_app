@@ -3,12 +3,16 @@ function createPostElement (data) {
     post.className = "post";
 
     const header = document.createElement("h2");
-    header.textContent = data["title"];
+    header.textContent = data["Date"];
     post.appendChild(header);
 
-    const content = document.createElement("p");
-    content.textContent = data["content"];
-    post.appendChild(content);
+    const text = document.createElement("p");
+    text.textContent = data["Text"];
+    post.appendChild(text);
+
+    const category = document.createElement("p");
+    category.textContent = data["Category"];
+    post.appendChild(category);
 
     return post;
 }
@@ -25,8 +29,9 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            title: form.get("title"),
-            content: form.get("content")
+            Date: form.get("Date"),
+            Text: form.get("Text"),
+            Category: form.get("Category")
         })
     }
 

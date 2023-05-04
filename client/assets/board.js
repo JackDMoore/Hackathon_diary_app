@@ -30,7 +30,7 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
         })
     }
 
-    const result = await fetch("http://localhost:3000/posts", options);
+    const result = await fetch("http://localhost:3000/diarys", options);
 
     if (result.status == 201) {
         window.location.reload();
@@ -44,11 +44,11 @@ async function loadPosts () {
             'Authorization': localStorage.getItem("token")
         }
     }
-    const response = await fetch("http://localhost:3000/posts", options);
+    const response = await fetch("http://localhost:3000/diarys", options);
 
     if (response.status == 200) {
         const posts = await response.json();
-    
+
         const container = document.getElementById("posts");
 
         posts.forEach(p => {
@@ -62,10 +62,3 @@ async function loadPosts () {
 }
 
 loadPosts();
-
-
-
-
-
-
-
